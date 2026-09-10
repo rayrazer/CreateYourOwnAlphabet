@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie Seu Próprio Alfabeto</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <header class="banner">
+        <h1 class="banner-title">Crie Seu Próprio Alfabeto</h1>
+        <p class="banner-subtitle">Desenhe, personalize e exporte o seu próprio alfabeto.</p>
+    </header>
+
+    <main>
+        <section id="home" class="home">
+            <h2 class="home-title">Bem-vindo(a)!</h2>
+            <p class="home-text">
+                Escolha uma opção para começar: crie um alfabeto desenhando as
+                letras ou importe um alfabeto já existente para editar e recortar.
+            </p>
+            <div class="home-btns">
+                <button class="btn btn-primary" id="openCreate">Criar seu Próprio Alfabeto</button>
+                <button class="btn btn-secondary" id="openImport">Importar um Alfabeto</button>
+            </div>
+        </section>
+
+        <div class="modal hidden" id="modal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose" title="Fechar">&times;</button>
+
+                <!-- Seleção de alfabeto -->
+                <section class="view hidden" id="view-alphabet">
+                    <h2>Selecione um alfabeto</h2>
+                    <p class="view-hint">Escolha um alfabeto existente para trocar as letras ou crie um alfabeto personalizado.</p>
+                    <div class="alphabet-list" id="alphabetList"></div>
+                </section>
+
+                <!-- Editor de letras -->
+                <section class="view hidden" id="view-editor">
+                    <div class="editor-head">
+                        <h2 id="editorTitle">Alfabeto</h2>
+                        <span class="letter-label" id="letterLabel"></span>
+                    </div>
+
+                    <div class="application">
+                        <div class="letter-panel" id="referencePanel">
+                            <h2>Modelo</h2>
+                            <canvas id="show_letter"></canvas>
+                        </div>
+                        <div class="letter-panel">
+                            <h2>Desenhe aqui</h2>
+                            <canvas id="draw_letter"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="draw-tools">
+                        <button class="tool-btn active" id="toolBrush">Pincel</button>
+                        <button class="tool-btn" id="toolEraser">Borracha</button>
+                        <label for="color">Cor:</label>
+                        <input type="color" id="color" value="#000000">
+                        <label for="lineWidth">Espessura:</label>
+                        <input type="range" id="lineWidth" min="1" max="40" value="8">
+                        <button class="btn btn-danger" id="clear">Limpar</button>
+                        <label class="toggle">
+                            <input type="checkbox" id="transparent">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Fundo transparente</span>
+                        </label>
+                    </div>
+
+                    <div class="btns">
+                        <button class="btn" id="previus">Anterior</button>
+                        <button class="btn" id="next">Próximo</button>
+                        <button class="btn btn-warn hidden" id="addLetter">Adicionar letra</button>
+                        <button class="btn btn-warn hidden" id="deleteLetter">Apagar letra</button>
+                        <button class="btn btn-teal" id="saveLetter">Salvar Letra</button>
+                        <button class="btn btn-green" id="save">Salvar Alfabeto</button>
+                    </div>
+                </section>
+
+                <!-- Importação -->
+                <section class="view hidden" id="view-import">
+                    <h2>Importar alfabeto</h2>
+                    <p class="view-hint">
+                        Envie uma imagem em grade de <strong>7 colunas</strong> com as letras.
+                        A quantidade de linhas é calculada automaticamente pela altura da
+                        imagem (células quadradas), então alfabetos com mais de 28 caracteres
+                        também são cortados por completo.
+                    </p>
+                    <div class="import-tools">
+                        <span class="import-label">Imagem:</span>
+                        <input type="file" id="importFile" accept="image/*">
+                    </div>
+                    <div class="btns">
+                        <button class="btn btn-teal" id="importAndEdit">Importar para edição</button>
+                        <button class="btn btn-purple" id="importZip">Cortar letras e salvar ZIP</button>
+                    </div>
+                    <span id="importStatus" class="status"></span>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Crie Seu Próprio Alfabeto &mdash; 2026</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>

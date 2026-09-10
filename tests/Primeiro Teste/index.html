@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie Seu Próprio Alfabeto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1 class="title">Crie seu próprio alfabeto</h1>
+        <div class="application">
+            <div class="letter-panel">
+                <h2>Modelo</h2>
+                <canvas id="show_letter"></canvas>
+            </div>
+            <div class="letter-panel">
+                <h2>Desenhe aqui</h2>
+                <canvas id="draw_letter"></canvas>
+            </div>
+        </div>
+        <div class="draw-tools">
+            <label for="color">Cor:</label>
+            <input type="color" id="color" value="#000000">
+            <label for="lineWidth">Espessura:</label>
+            <input type="range" id="lineWidth" min="1" max="40" value="8">
+            <button class="btn" id="clear">Limpar</button>
+        </div>
+        <div class="btns">
+            <button class="btn" id="previus">Anterior</button>
+            <button class="btn" id="next">Próximo</button>
+            <button class="btn" id="saveLetter">Salvar Letra</button>
+            <button class="btn" id="save">Salvar Alfabeto</button>
+        </div>
+
+        <div class="export-tools">
+            <label class="toggle">
+                <input type="checkbox" id="transparent">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Fundo transparente</span>
+            </label>
+        </div>
+
+        <div class="import-tools">
+            <span class="import-label">Importar imagem (grade 7x4):</span>
+            <input type="file" id="importFile" accept="image/*">
+            <button class="btn" id="importZip">Cortar letras e salvar ZIP</button>
+            <span id="importStatus" class="status"></span>
+        </div>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
